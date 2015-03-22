@@ -36,7 +36,7 @@ The R code in *run_analysis.R* proceeds under the assumption that the zip file a
 
 ###Libraries Used
 
-The libraries used in this operation are `data.table` and `dplyr`. We prefer `data.table` as it is efficient in handling large data as tables. `dplyr` is used to aggregate variables to create the tidy data.
+The libraries used in this operation are `data.table` and `dplyr`. `data.table` is efficient in handling large data as tables. `dplyr` is used to aggregate variables to create the tidy data.
 
 ```{r, message=FALSE}
 library(data.table)
