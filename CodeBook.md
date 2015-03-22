@@ -1,6 +1,6 @@
 CodeBook
 ---------------------------------------------------------------
-This document describes the data and transofrmations used by *run_analysis.R* and the definition of variables in *Tidy.txt*.
+This document describes the data and transformations used by *run_analysis.R* and the definition of variables in *Tidy.txt*.
 
 ##Dataset Used
 
