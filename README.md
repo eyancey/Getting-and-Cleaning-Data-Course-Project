@@ -1,5 +1,6 @@
 # Getting and Cleaning Data Course Project
 
+
 ##Goal
 
 Companies like *FitBit, Nike,* and *Jawbone Up* are racing to develop the most advanced algorithms to attract new users. The data linked are collected from the accelerometers from the Samsung Galaxy S smartphone. 
@@ -12,14 +13,19 @@ The data is available at:
 
 <https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip>
 
-The aim of the project is to clean and extract usable data from the above zip file. R script called run_analysis.R that does the following:
-- Merges the training and the test sets to create one data set.
-- Extracts only the measurements on the mean and standard deviation for each measurement. 
-- Uses descriptive activity names to name the activities in the data set
-- Appropriately labels the data set with descriptive variable names. 
-- From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+The aim of the project is to clean and extract usable data from the above zip file. The R script called run_analysis.R does the following:
 
-In this repository, you find:
+1. Merges the training and the test sets to create one data set.
+
+2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+
+3. Uses descriptive activity names to name the activities in the data set
+
+4. Appropriately labels the data set with descriptive variable names. 
+
+5. From the data set in step 4, create a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+In this repository, you will find the following:
 
 - *run_analysis.R* : the R-code run on the data set
 
@@ -71,7 +77,7 @@ featuresTest <- read.table("UCI HAR Dataset/test/X_test.txt", header = FALSE)
 ```
 
 
-##Part 1 - Merge the training and the test sets to create one data set
+##Step 1 - Merge the training and the test sets to create one data set
 We can use combine the respective data in training and test data sets corresponding to subject, activity and features. The results are stored in `subject`, `activity` and `features`.
 ```{r}
 subject <- rbind(subjectTrain, subjectTest)
@@ -94,7 +100,7 @@ colnames(subject) <- "Subject"
 completeData <- cbind(features,activity,subject)
 ```
 
-##Part 2 - Extracts only the measurements on the mean and standard deviation for each measurement
+##Step 2 - Extracts only the measurements on the mean and standard deviation for each measurement
 
 Extract the column indices that have either mean or std in them.
 ```{r}
@@ -110,7 +116,7 @@ We create `extractedData` with the selected columns in `requiredColumns`. And ag
 extractedData <- completeData[,requiredColumns]
 dim(extractedData)
 ```
-##Part 3 - Uses descriptive activity names to name the activities in the data set
+##Step 3 - Uses descriptive activity names to name the activities in the data set
 The `activity` field in `extractedData` is originally of numeric type. We need to change its type to character so that it can accept activity names. The activity names are taken from metadata `activityLabels`.
 ```{r}
 extractedData$Activity <- as.character(extractedData$Activity)
@@ -122,7 +128,7 @@ We need to factor the `activity` variable, once the activity names are updated.
 ```{r}
 extractedData$Activity <- as.factor(extractedData$Activity)
 ```
-##Part 4 - Appropriately labels the data set with descriptive variable names
+##Step 4 - Appropriately labels the data set with descriptive variable names
 Here are the names of the variables in `extractedData` 
 ```{r}
 names(extractedData)
@@ -160,7 +166,7 @@ Here are the names of the variables in `extractedData` after they are edited
 names(extractedData)
 ```
 
-##Part 5 - From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
+##Step 5 - From the data set in Step 4, create a second, independent tidy data set with the average of each variable for each activity and each subject
 
 Firstly, let us set `Subject` as a factor variable. 
 ```{r}
