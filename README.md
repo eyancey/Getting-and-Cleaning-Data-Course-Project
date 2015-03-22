@@ -29,8 +29,6 @@ In this repository, you find:
 
 - *README.md* : the analysis of the code in *run_analysis.R*
 
-- *analysis.html* : the html version of *README.md* that can be accessed at <http://ajay2589.github.io/GettingAndCleaningData/analysis.html>
-
 ## Getting Started
 
 ###Basic Assumption
