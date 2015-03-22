@@ -104,3 +104,4 @@ tidyData <- tidyData[order(tidyData$Subject,tidyData$Activity),]
 
 #Write tidyData into a text file
 write.table(tidyData, file = "Tidy.txt", row.names = FALSE)
+
