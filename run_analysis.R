@@ -22,7 +22,7 @@ activityTest <- read.table("UCI HAR Dataset/test/y_test.txt", header = FALSE)
 featuresTest <- read.table("UCI HAR Dataset/test/X_test.txt", header = FALSE)
 
 
-#Part 1 - Merge the training and the test sets to create one data set
+#Step 1 - Merge the training and the test sets to create one data set
 subject <- rbind(subjectTrain, subjectTest)
 activity <- rbind(activityTrain, activityTest)
 features <- rbind(featuresTrain, featuresTest)
@@ -36,7 +36,7 @@ colnames(subject) <- "Subject"
 completeData <- cbind(features,activity,subject)
 
 
-#Part 2 - Extracts only the measurements on the mean and standard deviation for each measurement
+#Step 2 - Extracts only the measurements on the mean and standard deviation for each measurement
 columnsWithMeanSTD <- grep(".*Mean.*|.*Std.*", names(completeData), ignore.case=TRUE)
 
 #Adding activity and subject columns
@@ -50,7 +50,7 @@ extractedData <- completeData[,requiredColumns]
 dim(extractedData)
 
 
-#Part 3 - Uses descriptive activity names to name the activities in the data set
+#Step 3 - Uses descriptive activity names to name the activities in the data set
 
 extractedData$Activity <- as.character(extractedData$Activity)
 for (i in 1:6){
@@ -60,7 +60,7 @@ for (i in 1:6){
 extractedData$Activity <- as.factor(extractedData$Activity)
 
 
-#Part 4 - Appropriately labels the data set with descriptive variable names. 
+#Step 4 - Appropriately labels the data set with descriptive variable names. 
 
 #Look at variable names
 names(extractedData)
@@ -90,7 +90,7 @@ names(extractedData)<-gsub("gravity", "Gravity", names(extractedData))
 names(extractedData)
 
 
-#Part 5 - From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+#Step 5 - From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 #Set the subject variable in the data as a factor
 
 extractedData$Subject <- as.factor(extractedData$Subject)
